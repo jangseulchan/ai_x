@@ -1,0 +1,46 @@
+9절. 데이터 그룹화 및 집계
+
+9.1 Goupby
+-cf. pivot_table
+
+-다중열로 그룹화
+
+9.2 레이블 인코딩
+
+10절. 데이터 구조 변경
+와이드 포맷 <-> 롱포맷
+판다스 공식 문서의 melt : https://pandas.pydata.org/docs/user_guide/reshaping.html#reshaping-by-melt
+Tidy Data(7page) : https://vita.had.co.nz/papers/tidy-data.pdf
+
+10.1 melt를 이용한 언피벗팅(와이드포맷->롱포맷)
+10.2 pivot_table을 이용한 피벗팅(롱포맷->와이드포맷)
+
+11절. 데이터프레임(시리즈)에 함수적용시키기
+apply(func, axis) : 축요소별(요소별) 함수 적용(데이터프레임이나 시리즈에서 가능)
+applymap(func) : 각 요소별 함수 적용(데이터 프레임에서만 가능)
+map(func) : 각 요소별 함수 적용(1차원 리스트, 시리즈에서만 가능)
+
+11.1 apply
+11.2 applymap
+11.3 map
+-1차원
+
+# 12절. 일괄변경하기(결측치, 특정값)
+
+12.1 fillna
+- 대부분 결측치는 drop하거나, 평균값대체, 중위수대체, 그룹별 평균값, 그룹별 중위수, 이전값, 이후값 등으로 대체
+
+12.2 replace(to_value, new_value, inplace=T/F)
+- to_value를 new_value
+- to_value에 정규표현식 이용
+
+
+
+
+
+
+
+
+
+
+

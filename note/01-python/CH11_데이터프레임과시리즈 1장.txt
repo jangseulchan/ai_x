@@ -67,6 +67,39 @@ Pandas docs
 7.2 열이름으로 정렬
 7.3 값에 의한 정렬
 
+8절. 기초 통계 분석
+
+* 판다스 : 기초통계/ statsmodels : 난이도 있는 통계
+count : NaN을 제외한 갯수
+min
+max
+sum
+cumsum : 누적합
+cumprod : 누적곱
+mean
+rolling(n).mean() : 데이터 변동(노이즈)가 다소 있을 때, 추세(패턴)을 부드럽게 보고 싶을 때
+var : 분산
+std : 표준편차
+median : 중위수(50%지점)
+qunantile : 분위수 - 0사분위수, 1사분위수(25%), 2사분위수(50%), 3사분위수(75%), 4사분위수(100%) IQR = Q3-Q1 Q1-1.5IQR ~ Q3+1.5IQR 이 외의 값은 이상치 max Q3 Q2 Q1 min
+describe : 요약통계량
+corr : 상관관계(계수)
+
+8.1 min, max, mean, std...
+8.2 요약 통계량
+8.3 공분산, 상관계수
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
