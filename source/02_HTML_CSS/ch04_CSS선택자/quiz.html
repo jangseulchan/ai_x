@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        /* * * 전체 레이아웃 잡기 * * */
+        #header, #content, #footer{
+            width:1000px; margin:0 auto;
+        }
+        .left, .right{
+            float:left;
+            width:150px; height:150px;
+            background-color:lightgray;
+            border:1px solid gray;
+        }
+        .center{
+            float:left;
+            width:693px; height:150px;
+            background-color:lightgray;
+            border:1px solid gray;
+        }
+        #content > div{height:300px;}
+        #header .left{
+            border-radius: 20px 0 20px 0;
+        }
+        #header .center{
+            border-radius: 0 0 20px 20px;
+        }
+        #header .right{
+            border-radius: 0 20px 0 20px;
+        }
+        #content .left{
+            border-radius: 0 20px 20px 0;
+        }
+        #content .center{
+            border-radius: 20px 20px 20px 20px;
+        }
+        #content .center ul{
+            overflow:hidden;
+            text-align:center;
+        }
+        #content .center ul li{
+            float:left;
+            list-style:none;
+            font-size: 2em;
+            width:33.3%;
+            font-weight:bold;
+        }
+        #content .center ul li a{
+            text-decoration:none;
+            color:black;
+        }
+        #content .center #academ h1{
+            text-align:center;
+            padding:20px;
+        }
+        #content .center #academ p{
+            padding:20px;
+        }
+        #content .right{
+            border-radius: 20px 0 0 20px;
+        }
+        #content .color{
+            color:orange;
+        }
+        #footer .left{
+            border-radius: 0 20px 0 20px;
+        }
+        #footer .center{
+            border-radius: 20px 20px 0 0;
+        }
+        #footer .right{
+            border-radius: 20px 0 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div class="left"></div>
+        <div class="center"></div>
+        <div class="right"></div>
+    </div>
+    <div id="content">
+        <div class="left"></div>
+        <div class="center">
+            <div id="nav"></div>
+            <ul>
+                <li><a href="menu1">menu1</a></li>
+                <li><a href="menu2">menu2</a></li>
+                <li><a href="menu3">menu3</a></li>
+            </ul>
+            <div id="academ">
+                <h1>AI개발자 양성과정</h1>
+                <p>
+                    행정각부의 설치·조직과 직무범위는 법률로 정한다. 국가는 건전한 소비행위를 계도하고 생산품의 품질향상을 촉구하기 위한 소비자보호운동을 법률이 정하는 바에 의하여 보장한다.
+                </p>
+            </div>
+        </div>
+        <div class="right">
+            <ol>
+                <li>태그</li>
+                <li>전체(*)</li>
+                <li>id,class</li>
+                <li>속성</li>
+                <li>후손,자손</li>
+                <li>동위</li>
+                <li>반응</li>
+                <li>상태</li>
+                <li>구조</li>
+                <li class="color">문자</li>
+                <li class="color">링크</li>
+                <li class="color">부정</li>
+            </ol>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="left"></div>
+        <div class="center"></div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>
