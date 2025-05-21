@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title></title>
+    <style>
+        
+    </style>
+    <script>
+        let cnt = 0; // 누적 횟수
+        let right = 0; // 유효한 정수를 입력한 횟수
+        let wrong = 0; // 유효하지 않은 점수를 입력한 횟수
+        let sum = 0; // 점수 누적
+        while(confirm('누적할래?')){
+            let input = prompt('누적할 점수?');
+            cnt++;
+            let score = parseFloat(input);
+            if(!isNaN(score) && score >= 0 && score <= 100){
+                sum += score;
+                right++;
+            }else{
+                alert('0~100을 입력해');
+                wrong++;
+            }
+        };
+        // 횟수들과 누적점수 출력
+        document.write(cnt+'번 입력'+'<br>');
+        document.write('누적점수 :' + sum +'<br>');
+        document.write('점수를 제대로 입력한 횟수 :' + right +'<br>');
+        document.write('점수를 잘못 입력한 횟수 :' + wrong +'<br>');
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
