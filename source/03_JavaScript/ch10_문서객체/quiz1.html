@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title></title>
+    <style>
+        table {width:280px; height: 100px; margin: 10px auto;} h3{text-align:center;}
+    </style>
+    <script>
+        window.onload = ()=>{
+            var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'navy', 'purple'];
+            var tds = document.querySelectorAll('td');
+            tds.forEach((td, idx) =>{
+                td.style.backgroundColor = colors[idx];
+                td.onmouseover = ()=>{
+                    document.body.style.backgroundColor = colors[idx];
+                };
+            });
+            var tr = document.querySelector('tr');
+            tr.onmouseout = ()=>{
+                document.body.style.backgroundColor = 'white';
+            };
+        };
+    </script>
+</head>
+<body>
+    <h3>quiz1 : 마우스를 올리면 바탕화면도 해당 색상으로</h3>
+    <table>
+        <tr onmouseout="bgColorChange"> <!-- tr에 마우스를 빼면 바탕화면이 하얀색 -->
+            <td onmouseover=""></td>
+            <td onmouseover=""></td>
+            <td onmouseover=""></td>
+            <td onmouseover=""></td>
+            <td onmouseover=""></td>
+            <td onmouseover=""></td>
+            <td onmouseover=""></td>
+        </tr>
+    </table>
+</body>
+</html>
