@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul{overflow: hidden;}
+        li{float: left; list-style: none; margin: 3px;}
+    </style>
+    <script>
+        var overImg = ['img/0over.jpg', 'img/1over.jpg', 'img/2over.jpg', 'img/3over.jpg'];
+        var outImg = ['img/0out.jpg', 'img/1out.jpg', 'img/2out.jpg', 'img/3out.jpg'];
+        window.onload = function () {
+            const imgs = document.querySelectorAll("ul li img");
+            imgs.forEach((img, index) => {
+                img.onmouseover = function () {
+                    img.src = overImg[index];
+                };
+                img.onmouseout = function () {
+                    img.src = outImg[index];
+                };
+            });
+        };
+    </script>
+</head>
+<body>
+    <ul>
+        <li><a href="#"><img src="img/0out.jpg" /></a></li>
+        <li><a href="#"><img src="img/1out.jpg" /></a></li>
+        <li><a href="#"><img src="img/2out.jpg" /></a></li>
+        <li><a href="#"><img src="img/3out.jpg" /></a></li>
+    </ul>
+</body>
+</html>

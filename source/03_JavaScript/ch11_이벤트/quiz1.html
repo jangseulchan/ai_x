@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        table{width:500px; margin: 10px auto; background-color: darkgreen;}
+        td{background-color: white; padding: 50px; text-align: center;}
+    </style>
+    <script>
+        document.addEventListener("keydown", function(event) {
+            let code = event.keyCode;
+            let key = event.key;
+            if (key >= 0 && key <= 8) {
+            document.querySelectorAll("td").forEach(td => {
+                td.style.backgroundColor = "white";
+            });
+            let cell = Array.from(document.querySelectorAll("td")).find(td => td.innerText == key);
+            if (code >= 48 && code <= 56) {
+                cell.style.backgroundColor = "yellow";
+            } else if (code >= 96 && code <= 105) {
+                cell.style.backgroundColor = "red";
+            }
+            }
+        });
+    </script>
+</head>
+<body>
+    <table>
+        <tr><td>0</td><td>1</td><td>2</td></tr>
+        <tr><td>3</td><td>4</td><td>5</td></tr>
+        <tr><td>6</td><td>7</td><td>8</td></tr>
+    </table>
+</body>
+</html>
