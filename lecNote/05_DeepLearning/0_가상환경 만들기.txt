@@ -28,8 +28,9 @@ pip install nltk==3.7 # 영어권 자연어처리
 pip install konlpy # 한글자연어처리(java필요)
 pip install python-mecab-ko # 한글자연어처리(C++필요)
 pip install wordcloud
-pip install 
-
+pip install gensim
+pip install python-dotenv # .env읽어들이기(강추)
+pip install python-decouple # .env읽어들이기(주피터환경에서 안 될 수도 있어)
 
 
 
