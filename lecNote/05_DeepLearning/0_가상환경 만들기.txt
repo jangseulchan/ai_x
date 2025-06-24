@@ -31,10 +31,21 @@ pip install wordcloud
 pip install gensim
 pip install python-dotenv # .env읽어들이기(강추)
 pip install python-decouple # .env읽어들이기(주피터환경에서 안 될 수도 있어)
+pip install statsmodels==0.13.5 # 주기적인 데이터 트렌드 추이
+pip install prophet # facebook에서 개발한 시계열 예측 라이브러리
 
+※ 허깅페이스(다양한 llm 모델과 환경을 제공
+conda install pytorch torchvision -c pytorch # 파이토치
+pip install sympy==1.13.1 fsspec
+pip install transformers # 트랜스포머스
+pip install sentencepiece # 구글이 만든 자연어 Tokenizer 기능(구글 作)
+pip install hf_xet # 허깅페이스 hub 대용량 모델 파일을 빠르게 업로드/다운로드 지원하는 도구
+pip install pillow
+pip install sacremoses # 아래의 영한번역에서 경고 줄이기도 하고 번역품질도 높아져
 
-
-
+pip freeze > requirements.txt
+notepad requirements.txt
+pip install -r requirements.txt #requirements.txt 에 있는 라이브러리들 설치
 
 
 
