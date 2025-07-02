@@ -1,4 +1,4 @@
-※ 가상환경 만들기(ml-dl-nlp / llm-lab)
+※ 가상환경 만들기(ml-dl-nlp / llm)
 
 (현재 존재하는 가상환경 목록 확인) conda env list
 (가상환경 생성:-n은 --name을 의미) conda create -n ml-dl-nlp python=3.10 
