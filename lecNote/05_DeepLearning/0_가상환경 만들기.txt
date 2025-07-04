@@ -47,6 +47,32 @@ pip freeze > requirements.txt
 notepad requirements.txt
 pip install -r requirements.txt #requirements.txt 에 있는 라이브러리들 설치
 
+의사결정나무모형
+conda install -c conda-forge graphviz(의사결정나무 그래프를 생성하는 도구)
+pip install pydot( Graphviz의 .dot 데이터를 이미지로 변환하는 라이브러리)
+dot -V(확인)
+
+아나콘다 base환경에서
+conda install graphviz
+pip install pydot
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
