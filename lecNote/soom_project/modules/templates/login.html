@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>로그인</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <style>
+    .login-box {
+      max-width: 400px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🔐 로그인</h1>
+  </div>
+
+  <div class="login-box">
+    <div class="input-group">
+      <label for="username">아이디</label>
+      <input type="text" id="username" placeholder="admin" />
+    </div>
+    <div class="input-group">
+      <label for="password">비밀번호</label>
+      <input type="password" id="password" placeholder="1234" />
+    </div>
+    <button class="btn btn-success" onclick="login()">로그인</button>
+  </div>
+
+  <script>
+    async function login() {
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          username: document.getElementById('username').value,
+          password: document.getElementById('password').value
+        })
+      });
+      const result = await res.json();
+      if (result.success) {
+        alert('✅ 로그인 성공!');
+        location.href = '/map';
+      } else {
+        alert('❌ 로그인 실패: ' + result.message);
+      }
+    }
+  </script>
+</body>
+</html>

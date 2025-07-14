@@ -12,7 +12,7 @@ pip install tensorflow-cpu==2.10.0
 (특정 패키지 설치 확인 ) conda list | findstr jupyter
 
 (가상환경에서 Jupyter를 설치해야 함) conda install ipykernel
-(가상환경을 Jupyter에서 선택 가능한 커널로 등록) python -m ipykernel install --user --name ml-dl-nlp --display-name "ml-dl-nlp" 
+(가상환경을 Jupyter에서 선택 가능한 커널로 등록) python -m ipykernel install --user --name ml-dl-nlp --display-name "ml-dl-nlp"
 
 (가상환경 지우기 : conda env remove --name 가상환경이름 )
 (가상환경 등록 확인 : jupyter kernelspec list)

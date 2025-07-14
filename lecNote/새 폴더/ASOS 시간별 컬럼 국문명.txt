@@ -1,0 +1,40 @@
+<item>
+<tm>2020-07-10 22:00</tm>              # 시간
+<rnum>23</rnum>                        # 결과 순번
+<stnId>108</stnId>                     # 지점 번호
+<stnNm>서울</stnNm>                    # 지점명
+<ta>23.4</ta>                          # 기온 (℃)
+<taQcflg/>                             # 기온 품질검사
+<rn/>                                  # 강수량 (mm)
+<rnQcflg>9</rnQcflg>                   # 강수량 품질검사
+<ws>1.9</ws>                           # 풍속 (m/s)
+<wsQcflg/>                             # 풍속 품질검사
+<wd>50</wd>                            # 풍향 (도)
+<wdQcflg/>                             # 풍향 품질검사
+<hm>73</hm>                            # 습도 (%)
+<hmQcflg/>                             # 습도 품질검사
+<pv>20.9</pv>                          # 증기압 (hPa)
+<td>18.2</td>                          # 이슬점 온도 (℃)
+<pa>993.1</pa>                         # 현지기압 (hPa)
+<paQcflg/>                             # 현지기압 품질검사
+<ps>1002.8</ps>                        # 해면기압 (hPa)
+<psQcflg/>                             # 해면기압 품질검사
+<ss/>                                  # 일조 시간 (hr)
+<ssQcflg>9</ssQcflg>                   # 일조 품질검사
+<icsr/>                                # 일사량 (MJ/m²)
+<dsnw/>                                # 적설량 (cm)
+<hr3Fhsc/>                             # 3시간 신적설량 (cm)
+<dc10Tca>1</dc10Tca>                   # 전운량 (총운량, 0~10)
+<dc10LmcsCa>0</dc10LmcsCa>             # 중하층운량 (0~10)
+<clfmAbbrCd/>                          # 운형 약어 코드
+<lcsCh/>                               # 최저운고 (100m 단위)
+<vs>2000</vs>                          # 시정 (가시거리, m)
+<gndSttCd/>                            # 지면상태 코드
+<dmstMtphNo/>                          # 기상현상 코드
+<ts>21.9</ts>                          # 지면온도 (℃)
+<tsQcflg/>                             # 지면온도 품질검사
+<m005Te>25.4</m005Te>                  # 5cm 지중온도 (℃)
+<m01Te>25.7</m01Te>                    # 10cm 지중온도 (℃)
+<m02Te>27.2</m02Te>                    # 20cm 지중온도 (℃)
+<m03Te>26.0</m03Te>                    # 30cm 지중온도 (℃)
+</item>

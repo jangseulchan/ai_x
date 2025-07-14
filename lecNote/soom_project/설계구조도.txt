@@ -1,0 +1,43 @@
+CREW_SOOM/
+│
+├── config/
+│   └── settings.py                 # 설정 정보 (경로, 상수 등)
+│
+├── data/
+│   ├── database/                   # SQLite DB 또는 기타 저장용
+│   ├── flood_events/              # 침수 사건 수작업 수집 데이터
+│   ├── processed/                 # 전처리 완료된 데이터
+│   └── raw/                       # 원시 수집 데이터
+│
+├── logo/
+│   └── (프로젝트용 로고 이미지들)
+│
+├── models/                        # 학습된 모델 저장 폴더
+│
+├── modules/                       # 핵심 모듈 코드들
+│   ├── __pycache__/
+│   ├── data_loader.py            # 데이터 로딩 및 전략적 수집
+│   ├── evaluator.py              # 모델 성능 평가
+│   ├── multi_weather_api.py      # 기상청 API 연동 및 데이터 수집
+│   ├── preprocessor.py           # 데이터 전처리 기능
+│   ├── trainer.py                # 머신러닝 모델 학습 모듈
+│   ├── visualizer.py             # 시각화 기능
+│   └── web_app.py                # Flask 웹 애플리케이션 정의
+│
+├── static/                        # 정적 파일 (CSS, JS 등)
+│   ├── css/
+│   │   └── style.css             # 대시보드 스타일
+│   └── js/
+│       └── dashboard.js          # 대시보드 기능 자바스크립트
+│
+├── templates/
+│   └── dashboard.html             # Flask용 템플릿 HTML
+│
+├── outputs/                       # 예측 결과, 리포트 등 출력 저장 폴더
+│
+├── .env                           # API 키, 환경변수 설정 파일
+├── .gitignore                     # Git 추적 제외 설정
+├── requirements.txt               # 필요한 Python 패키지 목록
+├── backupweb_app.py               # 웹앱 백업 버전
+├── run.py                         # 프로젝트 실행 메인 스크립트
+└── 설계구조도.txt                 
