@@ -3,3 +3,4 @@ __pycache__/
 .env
 strategic_flood_data
 strategic_flood_data.db-journal
+X.seq.npy
