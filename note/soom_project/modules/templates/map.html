@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>서울시 구별 침수 위험 지도</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map { height: 80vh; border-radius: 15px; }
+    .blur-mask { 
+      position: absolute; 
+      top: 0; left: 0; width: 100%; height: 100%;
+      backdrop-filter: blur(8px); 
+      background: rgba(255,255,255,0.4); 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      font-size: 24px; 
+      font-weight: bold;
+      color: #333;
+      z-index: 999;
+    }
+    .legend {
+      background: white;
+      padding: 10px;
+      line-height: 1.5;
+      font-size: 14px;
+      border-radius: 8px;
+    }
+    .legend div { margin-bottom: 5px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🗺️ 서울시 침수 위험 지도</h1>
+  </div>
+
+  <div class="container" style="position: relative;">
+    <div id="map"></div>
+    <div id="map-blur" class="blur-mask" style="display: none;">🔒 로그인 후 이용 가능합니다</div>
+  </div>
+
+  <div class="container legend">
+    <strong>위험도 색상 등급:</strong>
+    <div><span style="background: #4CAF50; padding: 5px 10px; border-radius: 5px;">🟢 매우 낮음</span></div>
+    <div><span style="background: #FFEB3B; padding: 5px 10px; border-radius: 5px;">🟡 낮음</span></div>
+    <div><span style="background: #FF9800; padding: 5px 10px; border-radius: 5px;">🟠 보통</span></div>
+    <div><span style="background: #F44336; padding: 5px 10px; border-radius: 5px;">🔴 높음</span></div>
+    <div><span style="background: #9C27B0; padding: 5px 10px; border-radius: 5px;">🟣 매우 높음</span></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const riskColor = (score) => {
+      if (score <= 20) return '#4CAF50';
+      if (score <= 40) return '#FFEB3B';
+      if (score <= 60) return '#FF9800';
+      if (score <= 80) return '#F44336';
+      return '#9C27B0';
+    };
+
+    async function checkLogin() {
+      const res = await fetch('/api/session');
+      const data = await res.json();
+      document.getElementById('map-blur').style.display = data.logged_in ? 'none' : 'flex';
+      return data.logged_in;
+    }
+
+    async function drawMap() {
+      const map = L.map('map').setView([37.5665, 126.9780], 11);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18
+      }).addTo(map);
+
+      const geo = await fetch('/static/data/seoul_gu.geojson').then(res => res.json());
+      const risk = await fetch('/api/flood_map').then(res => res.json());
+
+      L.geoJSON(geo, {
+        style: (feature) => {
+          const gu = feature.properties.name;
+          const score = risk[gu] || 0;
+          return {
+            color: '#333',
+            weight: 1,
+            fillColor: riskColor(score),
+            fillOpacity: 0.7
+          };
+        },
+        onEachFeature: (feature, layer) => {
+          const gu = feature.properties.name;
+          const score = risk[gu] || 0;
+          layer.bindTooltip(`${gu} (${score.toFixed(1)}점)`, {sticky: true});
+        }
+      }).addTo(map);
+    }
+
+    checkLogin().then(drawMap);
+  </script>
+</body>
+</html>

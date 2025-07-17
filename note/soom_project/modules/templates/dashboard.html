@@ -1,0 +1,182 @@
+<!-- modules/templates/dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🌊 침수 예측 AI 시스템 (자동 업데이트)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- 전역 로딩 오버레이 -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <h3 id="loading-message">처리 중...</h3>
+            <p>잠시만 기다려주세요.</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>🌊 침수 예측 AI 시스템 (자동 업데이트)</h1>
+            <p>실시간 API 데이터 + 오늘까지 자동 채움 + 완전한 웹 기반 머신러닝 플랫폼</p>
+            <div id="system-status" class="status">시스템 상태 확인 중...</div>
+        </div>
+        
+        <!-- 데이터 현황 대시보드 -->
+        <div class="card">
+            <h2>📊 데이터 현황</h2>
+            <div class="data-info" id="data-info">
+                <div class="data-card">
+                    <h3 id="data-rows">-</h3>
+                    <p>총 데이터 수</p>
+                </div>
+                <div class="data-card">
+                    <h3 id="data-period">-</h3>
+                    <p>데이터 기간</p>
+                </div>
+                <div class="data-card">
+                    <h3 id="last-update">-</h3>
+                    <p>마지막 업데이트</p>
+                </div>
+                <div class="data-card">
+                    <h3 id="model-status">-</h3>
+                    <p>모델 상태</p>
+                </div>
+            </div>
+            
+            <!-- 오늘 날짜 표시 -->
+            <div class="date-section">
+                <div class="today-indicator" id="today-date">📅 오늘: -</div>
+                <p>시스템이 오늘까지 데이터를 자동으로 채워줍니다.</p>
+            </div>
+            
+            <!-- 자동 업데이트 설정 -->
+            <div class="update-status">
+                <div class="update-indicator" id="update-indicator"></div>
+                <span>자동 업데이트</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="auto-update-toggle" onchange="toggleAutoUpdate()">
+                    <span class="slider"></span>
+                </label>
+                <span id="auto-update-status">비활성화</span>
+                <span id="last-check" class="realtime-info"></span>
+            </div>
+        </div>
+        
+        <!-- 시스템 제어 패널 -->
+        <div class="card">
+            <h2>🎛️ 시스템 제어 패널</h2>
+            <div class="function-buttons">
+                <div class="function-btn btn-success" onclick="loadData()">
+                    <h3>📊 데이터 로드</h3>
+                    <p>ML_COMPLETE_DATASET.csv 로드</p>
+                </div>
+                <div class="function-btn btn-info" onclick="updateData()">
+                    <h3>🔄 데이터 업데이트</h3>
+                    <p>실제 API 데이터 가져오기</p>
+                </div>
+                <div class="function-btn btn-warning" onclick="trainModel()">
+                    <h3>🤖 모델 훈련</h3>
+                    <p>Random Forest 모델 훈련</p>
+                </div>
+                <div class="function-btn btn-danger" onclick="createVisualization('precipitation')">
+                    <h3>📈 시각화 생성</h3>
+                    <p>데이터 차트 생성</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 예측 시스템 -->
+        <div class="grid-2">
+            <div class="card">
+                <h2>🔮 실시간 침수 예측</h2>
+                
+                <!-- 날짜 선택 -->
+                <div class="input-group">
+                    <label>예측 날짜</label>
+                    <input type="date" id="prediction-date" value="">
+                </div>
+                
+                <div class="input-group">
+                    <label>강수량 (mm)</label>
+                    <input type="number" id="precipitation" value="0" min="0" max="300">
+                </div>
+                <div class="input-group">
+                    <label>습도 (%)</label>
+                    <input type="number" id="humidity" value="60" min="0" max="100">
+                </div>
+                <div class="input-group">
+                    <label>온도 (°C)</label>
+                    <input type="number" id="temperature" value="20" min="-20" max="40">
+                </div>
+                <div class="input-group">
+                    <label>3일 누적 강수량 (mm)</label>
+                    <input type="number" id="precip_3d" value="0" min="0" max="500">
+                </div>
+                <div class="input-group">
+                    <label>계절</label>
+                    <select id="season">
+                        <option value="rainy">장마철</option>
+                        <option value="dry">건조기</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="predictRisk()" style="width: 100%; margin-top: 15px;">
+                    🔍 위험도 예측
+                </button>
+            </div>
+            
+            <div class="card">
+                <h2>🎯 예측 결과</h2>
+                <div id="risk-display" class="risk-meter">
+                    예측을 시작하세요
+                </div>
+                <div id="recommendations" class="status">
+                    기상 정보를 입력하고 예측 버튼을 클릭하세요.
+                </div>
+                <div id="prediction-meta" class="realtime-info"></div>
+            </div>
+        </div>
+        
+        <!-- 테스트 시나리오 -->
+        <div class="card">
+            <h2>🧪 테스트 시나리오</h2>
+            <div class="scenario-grid">
+                <button class="scenario-btn" onclick="testScenario('calm')">
+                    평상시<br>0mm
+                </button>
+                <button class="scenario-btn" onclick="testScenario('light')">
+                    소량 강우<br>15mm
+                </button>
+                <button class="scenario-btn" onclick="testScenario('medium')">
+                    중간 강우<br>35mm
+                </button>
+                <button class="scenario-btn" onclick="testScenario('heavy')">
+                    집중호우<br>80mm
+                </button>
+                <button class="scenario-btn" onclick="testScenario('extreme')">
+                    극한 강우<br>130mm
+                </button>
+            </div>
+        </div>
+        
+        <!-- 시각화 패널 -->
+        <div class="card">
+            <h2>📊 데이터 시각화</h2>
+            <div class="function-buttons">
+                <button class="btn" onclick="createVisualization('precipitation')">강수량 시계열</button>
+                <button class="btn" onclick="createVisualization('monthly')">월별 패턴</button>
+                <button class="btn" onclick="createVisualization('distribution')">강수량 분포</button>
+                <button class="btn" onclick="createVisualization('correlation')">상관관계</button>
+                <button class="btn" onclick="createVisualization('recent_trend')">최근 트렌드</button>
+            </div>
+            <div class="viz-container" id="visualization-area">
+                <p>시각화 버튼을 클릭하세요</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
