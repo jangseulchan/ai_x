@@ -1,4 +1,4 @@
 .ipynb_checkpoints/
 __pycache__/
 .env
-X.seq.npy
+X_seq.npy
